@@ -16,7 +16,7 @@ function function3b(){
 		d3.select("body").selectAll("h2")
 		.data(dataset).enter()
 		.append("h2")
-		.text(function(d) { return d; });
+		.text(function(dataset) { return dataset; });
 }
 //Q4
 function function4(){
@@ -25,7 +25,7 @@ function function4(){
         		.data(dataset)
        			.enter()
         		.append("h2")
-        		.text(function(d) {return  d + " USD"; });
+        		.text(function(dataset) {return  dataset + " USD"; });
 
 }
 //Q5
@@ -34,8 +34,8 @@ function function5(){
 }//Q6
 function function6(){
 	const dataset = [10, 27, 22, 17, 67, 18, 9, 54, 91];
-	d3.selectAll("h2").style("color", function(d) {
-       	if (d < 20) { 
+	d3.selectAll("h2").style("color", function(dataset) {
+       	if (dataset < 20) { 
             return "red"; 
         } else {
             return "green"; 
@@ -59,10 +59,11 @@ function function8(){
 				.data(dataset)
 				.enter()
        			.append("rect")
-                .attr("x", function(d, i){return i * 30})
+                .attr("x", function(dataset, iterator){return iterator * 30})
                 .attr("y", 0)
-                .attr("width", 25)
-                .attr("height", function(d){return 2 * d});
+                .attr("width", 20)
+				.attr("height", function(dataset){return 2 * dataset})
+				.attr("fill", "red");
 }
 
 //Q9
@@ -73,16 +74,16 @@ function function9(){
 	    .attr("width", 500)
 	    .attr("height", 200);
 	const dataset = [10, 27, 22, 17, 67, 18, 9, 54, 91];
-	var h = svgTag2.attr('height');
+	var height = svgTag2.attr('height');
 
 	var svgrect = svgTag2.selectAll('rect')
 				.data(dataset)
 				.enter()
        			.append("rect")
-                .attr("x", function(d, i){return i * 30})
-                .attr("y", function(d){return  h-(2 * d)})
-                .attr("width", 25)
-                .attr("height", function(d){return 2 * d})
+                .attr("x", function(dataset, iterator){return iterator * 30})
+                .attr("y", function(dataset){return  height-(2 * dataset)})
+                .attr("width", 20)
+                .attr("height", function(dataset){return 2 * dataset})
                 .attr("fill", "blue");
 }
 
@@ -94,25 +95,25 @@ function function10(){
 	    .attr("height", 200).style("background","url('https://ak0.picdn.net/shutterstock/videos/31244470/thumb/1.jpg') no-repeat").attr("width", 300)
 	    .attr("height", 200);
 	const dataset = [10, 27, 22, 17, 67, 18, 9, 54, 91];
-	var h = svgTag3.attr('height');
+	var height = svgTag3.attr('height');
 
 	var svgrect = svgTag3.selectAll('rect')
 		.data(dataset)
 		.enter()
 		.append("rect")
-        .attr("x", function(d, i){return i * 30})
-        .attr("y", function(d){return  h-(2 * d)})
-        .attr("width", 25)
-        .attr("height", function(d){return (2 * d)})
+        .attr("x", function(dataset, iterator){return iterator * 30})
+        .attr("y", function(dataset){return  height-(2 * dataset)})
+        .attr("width", 20)
+        .attr("height", function(dataset){return (2 * dataset)})
         .attr("fill", "green")
 
     svgTag3.selectAll('text')
 		.data(dataset)
 		.enter()
 		.append("text")
-		.text(function(d){ return d;})
-		.attr('x', function(d, i){ return i * 30})
-		.attr('y', function(d, i){return h-(2 * d)-4});
+		.text(function(dataset){ return dataset;})
+		.attr('x', function(dataset, iterator){ return iterator * 30})
+		.attr('y', function(dataset, iterator){return height-(2 * dataset)-4});
 
 }
 
